@@ -1176,7 +1176,13 @@ function mapSync(l){if(!hasMap(l))return;if(needRt(l)&&!RJ.has(l.id))genRoute(l)
 
 /* the map itself: Apple Maps (MapKit JS) with a token, OpenStreetMap through Leaflet without one */
 const MAPKIT_TOKEN=''; // a MapKit JS token can go here; one added in the app (share button > Apple Maps Key) is used first
-const MKK='fit-mapkit-token',mkToken=()=>{let t='';try{t=localStorage.getItem(MKK)||''}catch(e){}return (t||MAPKIT_TOKEN).trim()};
+// CARTO's map tiles need this key since late August 2026 (without it every tile says "API KEY REQUIRED"). It is
+// meant to sit in the page: it goes out with every tile request. Free keys: carto.com/basemaps/apikey
+const CARTO_KEY='cb1_49nc_1_1e3ad36407ca7540dc59e873';
+// MapKit JS tokens are JWTs (three dot-separated parts, starting eyJ); anything else stored as one, such as a CARTO
+// key pasted into the Apple Maps dialog, is dropped so the map doesn't keep trying Apple Maps with it
+const isJWT=t=>/^[\w-]+\.[\w-]+\.[\w-]+$/.test(t);
+const MKK='fit-mapkit-token',mkToken=()=>{let t='';try{t=(localStorage.getItem(MKK)||'').trim();if(t&&!isJWT(t)){localStorage.removeItem(MKK);t=''}}catch(e){}t=t||MAPKIT_TOKEN.trim();return isJWT(t)?t:''};
 let MKP=null,MKBAD='',MKREADY=false;
 // MapKit JS 5 (mapkit.init hands it the token); if Apple no longer serves 5, MapKit JS 6 (token on the script tag)
 function loadMapKit(){const tok=mkToken();if(!tok)return Promise.reject(new Error('no token'));if(MKBAD)return Promise.reject(new Error(MKBAD));if(MKP)return MKP;
@@ -1219,7 +1225,7 @@ function viewMK(el,live){const M=mapkit,FV=M.FeatureVisibility,CS=M.ColorScheme|
   on(t,fn){map.addEventListener(t==='tap'?'single-tap':'long-press',ev=>fn(at(ev)))},size(){},kill(){map.destroy()}}}
 function viewLF(LF,el,live){const cls=el.className,map=LF.map(el,Object.assign({zoomControl:false,attributionControl:false,zoomSnap:0,preferCanvas:true},live?{}:{dragging:false,touchZoom:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,fadeAnimation:false}));
  LF.control.attribution({position:live?'topright':'bottomright',prefix:false}).addTo(map);
- const cdb=k=>LF.tileLayer('https://{s}.basemaps.cartocdn.com/'+k+'/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:20,attribution:'\u00a9 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> \u00a9 <a href="https://carto.com/attributions">CARTO</a>'});
+ const cdb=k=>LF.tileLayer('https://{s}.basemaps.cartocdn.com/'+k+'/{z}/{x}/{y}{r}.png?key='+CARTO_KEY,{subdomains:'abcd',maxZoom:20,attribution:'\u00a9 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> \u00a9 <a href="https://carto.com/attributions">CARTO</a>'});
  const std=cdb('dark_all').addTo(map),sat=LF.layerGroup([LF.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Imagery \u00a9 Esri'}),cdb('dark_only_labels')]);
  const lay=LF.layerGroup().addTo(map),dot=(p,k)=>LF.marker(p,{icon:LF.divIcon({className:'',html:`<i class="rdot ${k}"></i>`,iconSize:[0,0]}),interactive:false,keyboard:false}).addTo(lay);let pts=null;
  return {draw(g,w){lay.clearLayers();pts=g.P||[g.s];if(g.P){const st={weight:w,opacity:1,lineCap:'round',lineJoin:'round',interactive:false};LF.polyline(g.P,{...st,color:'#000',opacity:.3,weight:w+2}).addTo(lay);
@@ -1316,7 +1322,8 @@ async function shareMenu(o){const l=o.l,it=[['apple','Open in Apple Maps'],['new
  const a=await actions(o,it);if(MS!==o)return;
  if(a==='apple')openURL(amURL(l));else if(a==='new'){if(!RJ.has(l.id))genRoute(l)}else if(a==='pick')pickMode(o,true);
  else if(a==='send')navigator.share({title:`${l.f.dist} ${l.f.distu} ${l.type}`,url:amURL(l)}).catch(()=>{});else if(a==='key')keyDlg()}
-function keyDlg(){dlg({title:'Apple Maps Key',msg:'Paste a MapKit JS token from your Apple Developer account. Leave it empty to use OpenStreetMap maps.',area:mkToken(),ok:'Save'}).then(v=>{if(typeof v!=='string')return;const t=v.trim();
+function keyDlg(){dlg({title:'Apple Maps Key',msg:'Optional. The map already works without one. To switch it to Apple Maps, paste a MapKit JS token from your Apple Developer account (it starts with eyJ). Leave it empty for the built-in map.',area:mkToken(),ok:'Save'}).then(v=>{if(typeof v!=='string')return;const t=v.trim();
+ if(t&&!isJWT(t)){toast('That isn\u2019t a MapKit JS token (those start with eyJ). The map\u2019s tile key is already built in, so nothing needs pasting here.');return}
  try{if(t)localStorage.setItem(MKK,t);else localStorage.removeItem(MKK)}catch(e){}
  // MapKit can only be set up once per page load, so swapping a key it already has means starting fresh
  if(window.mapkit){location.reload();return}MKBAD='';MKP=null;if(MC)mapCard(MC.l);if(MS)sheetView(MS)})}
