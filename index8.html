@@ -377,6 +377,101 @@ h3 svg{width:15px;height:15px;fill:none;stroke:var(--gray);stroke-width:3;stroke
 .es .tl svg{width:20px;height:20px;stroke:rgba(255,255,255,.92);stroke-width:1.7}
 .es .lv svg.inf{width:22px;height:22px;fill:rgba(255,255,255,.55);stroke:none}
 .es .lv{padding-right:17px}
+/* Map card, measured from the Fitness screenshot: map inset 15pt in the card with 15pt corners, weather under it */
+#detail .mpcard{padding:15.5px 0 12.5px}
+.mpc{position:relative;height:141.5px;margin:0 15px;border-radius:15px;overflow:hidden;background:#1c2a31;isolation:isolate;-webkit-mask-image:-webkit-radial-gradient(#fff,#000);cursor:pointer;transition:transform .2s cubic-bezier(.32,.72,0,1)}
+.mpc:active{transform:scale(.985)}
+.mpv{position:absolute;inset:0;pointer-events:none}
+.mpv *{pointer-events:none!important}
+.mpw{display:grid;grid-template-columns:1fr 1fr;padding:11.3px 17px 0}
+.mpw label{display:flex;align-items:center;gap:4.3px;font-size:12px;line-height:16px;letter-spacing:.25px;text-transform:uppercase;color:#58585b}
+.mpw label svg{flex:none;width:auto;height:10.2px}
+.mpw>div+div label{gap:6px}
+.mpw>div+div label svg{height:7.2px}
+.mpw .v{display:flex;align-items:center;gap:4.7px;margin-top:-1.3px;font-size:28px;line-height:34px;font-weight:400;color:#8d8d8f;white-space:nowrap}
+.mpw .v svg{flex:none;width:13px;height:13px;margin-left:1.5px}
+.mpws{margin:-4px 17px 0;font-size:13px;line-height:18px;color:#7d7d7f}
+.mpws u{text-decoration-thickness:1px;text-underline-offset:2.5px}
+#app .leaflet-container{background:#1c2a31;font:11px -apple-system,system-ui,sans-serif;outline:none}
+#app .leaflet-control-attribution{background:none;color:rgba(255,255,255,.45);font-size:9px;line-height:12px;padding:0 10px 4px;text-shadow:0 0 3px #000}
+#app .leaflet-control-attribution a{color:inherit;text-decoration:none}
+.mpo{position:absolute;inset:0;z-index:900;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:0 28px;background:rgba(12,12,14,.55);color:#e5e5ea;font-size:15px;line-height:20px;text-align:center;pointer-events:none}
+.busy>.mpo,.err>.mpo{display:flex}
+.spn{flex:none;width:22px;height:22px;border-radius:50%;border:2.5px solid rgba(255,255,255,.22);border-top-color:#fff;animation:spn .8s linear infinite}
+@keyframes spn{to{transform:rotate(360deg)}}
+/* start (green) and end (red) dots: 12.8pt with a 2pt white ring */
+.rdot{position:absolute;left:-6.4px;top:-6.4px;width:12.8px;height:12.8px;box-sizing:border-box;border-radius:50%;border:2px solid #fff;box-shadow:0 .5px 2.5px rgba(0,0,0,.45)}
+.rdot.g{background:#64fa80}.rdot.r{background:#fa6b62}
+.rdw{position:relative;width:13px;height:13px;pointer-events:none}
+.rdw .rdot{left:.1px;top:6.6px}
+/* full-screen map, measured from the Fitness screenshot */
+.mps{position:absolute;inset:0;z-index:40;overflow:hidden}
+.mps .mpd{position:absolute;inset:0;background:rgba(0,0,0,.55);opacity:0;transition:opacity .45s ease}
+.mps.on .mpd{opacity:1}
+.mps .mpg{position:absolute;left:0;right:0;bottom:0;top:calc(47px - var(--sb));border-radius:37px 37px 0 0;overflow:hidden;background:#1c2a31;isolation:isolate;transform:translateY(100%);transition:transform .5s cubic-bezier(.32,.72,0,1)}
+.mps.on .mpg{transform:none}
+.mps .mpm{position:absolute;inset:0}
+.mps .leaflet-top.leaflet-right{top:134px}
+.mpg>.rb{position:absolute;z-index:1000;top:16px}
+.mpsh{left:16px}.mpcl{right:16px}
+.mpt{position:absolute;z-index:1000;top:16px;left:68px;right:68px;height:44px;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:22px;font-weight:600;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;pointer-events:none;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.mpty{position:absolute;z-index:1000;top:83.5px;right:13px;width:44px;height:44px;border:0;border-radius:12px;padding:0;display:grid;place-items:center;background:rgba(55,54,57,.92);color:#f2f2f7;cursor:pointer;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 2px 10px rgba(0,0,0,.25);transition:transform .15s,opacity .2s}
+.mpty:active{transform:scale(.94)}
+.mpty svg{width:21px;height:21px}
+.mpsh,.mpcl{transition:transform .28s cubic-bezier(.34,1.56,.64,1),opacity .2s}
+.mps.pick .mpsh,.mps.pick .mpty{opacity:0;pointer-events:none}
+.mps .mpo{inset:auto;top:72px;left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 136px);flex-direction:row;gap:10px;padding:11px 16px;border-radius:22px;background:rgba(30,30,32,.86);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 6px 20px rgba(0,0,0,.4);text-align:left}
+.mps .mpo .spn{width:18px;height:18px;border-width:2px}
+.mps.pick .mpo{display:none}
+.mps.pick .leaflet-overlay-pane,.mps.pick .leaflet-marker-pane{opacity:.35}
+/* share: an iOS action sheet */
+.mpa{position:absolute;inset:0;z-index:1100}
+.mpa .bg{position:absolute;inset:0;background:rgba(0,0,0,.35);opacity:0;transition:opacity .3s ease}
+.mpa.on .bg{opacity:1}
+.mpa .sh{position:absolute;left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom,0px));transform:translateY(calc(100% + 24px));transition:transform .4s cubic-bezier(.32,.72,0,1)}
+.mpa.on .sh{transform:none}
+.mpa .grp{border-radius:14px;overflow:hidden;background:rgba(44,44,46,.84);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8)}
+.mpa button{display:block;width:100%;height:57px;border:0;background:none;color:#0a84ff;font:400 20px -apple-system,system-ui,sans-serif;cursor:pointer}
+.mpa .grp button+button{box-shadow:inset 0 .5px rgba(255,255,255,.16)}
+.mpa button:active{background-color:rgba(255,255,255,.1)}
+.mpa .cn{margin-top:8px;border-radius:14px;background:rgba(44,44,46,.97);font-weight:600}
+/* map type: an iOS menu under its button */
+.mpmn{position:absolute;inset:0;z-index:1100}
+.mpmn .bk{position:absolute;inset:0}
+.mpmn .mn{position:absolute;top:133px;right:13px;width:230px;border-radius:13px;overflow:hidden;background:rgba(37,37,39,.86);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);box-shadow:0 10px 40px rgba(0,0,0,.45);transform-origin:top right;animation:mnIn .28s cubic-bezier(.32,.72,0,1)}
+@keyframes mnIn{from{opacity:0;transform:scale(.55)}}
+.mpmn button{display:flex;align-items:center;gap:6px;width:100%;height:44px;padding:0 15px 0 12px;border:0;background:none;color:#fff;font:400 17px -apple-system,system-ui,sans-serif;text-align:left;cursor:pointer}
+.mpmn button+button{box-shadow:inset 0 .5px rgba(255,255,255,.14)}
+.mpmn button:active{background:rgba(255,255,255,.1)}
+.mpmn .ck{display:grid;width:18px;visibility:hidden}.mpmn .on .ck{visibility:visible}
+.mpmn .ck svg{width:15px;height:15px}
+.mpmn button>svg{margin-left:auto;width:20px;height:20px}
+/* change start: a pin in the middle of the map and a search panel */
+.mpk{display:none;position:absolute;z-index:1000;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom,0px));padding:14px;border-radius:30px;background:rgba(30,30,32,.84);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);border:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.mps.pick .mpk{display:block}
+.mpr{display:flex;gap:10px}
+.mpr button,.mpcn{min-width:0;border:0;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;font:600 15px -apple-system,system-ui,sans-serif;transition:transform .15s,background-color .15s,opacity .15s}
+.mpr button{flex:1;height:46px;border-radius:23px;background:rgba(118,118,128,.24);color:#fff;white-space:nowrap}
+.mpr button:active,.mpcn:active{transform:scale(.97)}
+.mpr button:disabled{opacity:.4;cursor:default}
+.mpr svg{flex:none;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mpr .mpset{background:#bafd4f;color:#000}
+.mpcn{width:100%;height:40px;margin-top:6px;background:none;color:var(--gray)}
+.mpf{display:flex;align-items:center;gap:8px;height:42px;margin:0 0 6px;padding:0 12px;border-radius:14px;background:rgba(118,118,128,.24)}
+.mpf svg{flex:none;width:18px;height:18px;fill:none;stroke:var(--gray);stroke-width:2.2;stroke-linecap:round}
+.mpf input{flex:1;min-width:0;height:100%;border:0;padding:0;background:none;color:#fff;font:17px -apple-system,system-ui,sans-serif;outline:none;-webkit-appearance:none;appearance:none}
+.mpf input::placeholder{color:var(--gray)}
+.mpf input::-webkit-search-cancel-button{-webkit-appearance:none}
+.mpres{max-height:min(180px,24vh);overflow-y:auto;margin:0 -6px}
+.mpres button{display:block;width:100%;padding:8px 10px;border:0;border-radius:12px;background:none;color:#fff;text-align:left;font:inherit;cursor:pointer}
+.mpres button:active{background:rgba(255,255,255,.08)}
+.mpres b{display:block;font-size:16px;line-height:20px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mpres small{display:block;font-size:13px;line-height:17px;color:var(--gray);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mpq{padding:6px 10px 8px;color:var(--gray);font-size:14px}
+.mph{margin:6px 0 12px;font-size:13px;line-height:17px;color:var(--gray);text-align:center}
+.mppin{position:absolute;z-index:950;left:50%;top:50%;width:34px;height:46px;margin:-45px 0 0 -17px;display:none;pointer-events:none;filter:drop-shadow(0 3px 4px rgba(0,0,0,.5))}
+.mps.pick .mppin{display:block}
+@media (prefers-reduced-motion:reduce){.mps .mpg,.mps .mpd,.mpa .sh,.mpa .bg{transition-duration:.01s}.mpmn .mn{animation:none}}
 </style>
 </head>
 <body>
@@ -577,8 +672,9 @@ function renderDetail(){
  <h3>Splits ${chev}</h3>
  <div class="card spc"><table class="sp"><colgroup><col style="width:32px"><col style="width:101px"><col style="width:101px"><col></colgroup><thead><tr><th></th><th>Time</th><th>Pace</th><th>Heart Rate</th></tr></thead><tbody id="spb">${spRows()}</tbody></table></div>
  <h3>Heart Rate ${chev}</h3>
- <div class="card hr" id="hrc" title="Tap the chart to edit samples"><div class="mx">${e('hrmax')}</div><div id="hrs">${hrSvg(L.f.hr)}</div><div class="ax">${hrAxis(L).map((t,i)=>`<span id="hx${i+1}">${t}</span>`).join('')}<b id="hrmn">${hrMinLbl(L.f.hr)}</b></div><div class="avg">${e('hravg')}</div></div>`;
+ <div class="card hr" id="hrc" title="Tap the chart to edit samples"><div class="mx">${e('hrmax')}</div><div id="hrs">${hrSvg(L.f.hr)}</div><div class="ax">${hrAxis(L).map((t,i)=>`<span id="hx${i+1}">${t}</span>`).join('')}<b id="hrmn">${hrMinLbl(L.f.hr)}</b></div><div class="avg">${e('hravg')}</div></div>${hasMap(L)?mapCardHTML(L):''}`;
  $('detail').style.setProperty('--sx',Math.min(1,$('detail').scrollTop/24).toFixed(3));
+ mapCard(L);
 }
 function open(id,up){ss=SS.scrollTop;cur=byId(id);renderDetail();show('detail',up)}
 const WK=document.getElementById('wk'),WH=WK.querySelector('.wkh');WK.addEventListener('scroll',()=>{WH.style.opacity=Math.min(1,Math.max(0,(WK.scrollTop-40)/50))},{passive:true});
@@ -618,7 +714,7 @@ function dlg(o){return new Promise(res=>{const w=document.createElement('div');w
   let gone=false;const kd=ev=>{if(ev.key==='Escape')done(null)},done=v=>{if(gone)return;gone=true;document.removeEventListener('keydown',kd,true);w.classList.add('out');setTimeout(()=>w.remove(),190);res(v)};document.addEventListener('keydown',kd,true);
   w.addEventListener('click',ev=>{const b=ev.target.closest('button');if(b&&b.dataset.r==='rnd'){ta.value=hrTxt(o.rnd());up();revHr(pv);return}if(b)done(b.dataset.r==='1'?(ta?ta.value:true):null);else if(ev.target===w)done(null)})})}
 const hrAxis=L=>axis(L,pDur(L.f.wt)||0);
-function patch(l,ch){if(cur!==l)return;hrAxis(l).forEach((t,i)=>{const n=$('hx'+(i+1));if(n)n.textContent=t});ch.forEach(k=>{if(k==='sp*'){$('spb').innerHTML=spRows()}else if(k==='hr*'){$('hrs').innerHTML=hrSvg(l.f.hr);revHr($('hrs'));const mn=$('hrmn');if(mn)mn.textContent=hrMinLbl(l.f.hr)}else document.querySelectorAll(`[data-k="${l.id}|${k}"]`).forEach(n=>{const v=getV(l.f,k);if(n.textContent!==v)n.textContent=v})})}
+function patch(l,ch){if(cur!==l)return;hrAxis(l).forEach((t,i)=>{const n=$('hx'+(i+1));if(n)n.textContent=t});ch.forEach(k=>{if(k==='sp*'){$('spb').innerHTML=spRows()}else if(k==='hr*'){$('hrs').innerHTML=hrSvg(l.f.hr);revHr($('hrs'));const mn=$('hrmn');if(mn)mn.textContent=hrMinLbl(l.f.hr)}else document.querySelectorAll(`[data-k="${l.id}|${k}"]`).forEach(n=>{const v=getV(l.f,k);if(n.textContent!==v)n.textContent=v})});mapSync(l)}
 let fv=null;
 document.addEventListener('focusin',ev=>{const n=ev.target,k=n.dataset&&n.dataset.k;if(k){fv={k:k,v:n.textContent};if(/\|(dist|wt|pace|ac|tc|elev|hrv|hrmax|hravg|sp\.)/.test(k))setTimeout(()=>{if(document.activeElement!==n||n.textContent!==fv.v)return;const r=document.createRange();r.selectNodeContents(n);const g=getSelection();g.removeAllRanges();g.addRange(r)},0)}});
 function toast(m){document.querySelectorAll('.toast').forEach(t=>t.remove());const t=document.createElement('div');t.className='toast';t.textContent=m;$('app').appendChild(t);setTimeout(()=>t.remove(),2800)}
@@ -881,6 +977,365 @@ placeInd(Math.max(0,TS.indexOf(curS)),true);lgDraw();
 requestAnimationFrame(()=>lwBuild());if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>lwBuild());
 window.addEventListener('resize',()=>{placeInd(LG.sel,true);lgDraw();clearTimeout(LW.t);LW.t=setTimeout(lwBuild,200)});
 $('sh').addEventListener('click',ev=>{if(ev.target.closest('.shg'))toast('Sharing isn\u2019t set up in this demo.');else if(ev.target.closest('.shp a'))toast('Your activity is shared only with the people you choose.')});
+/* ---------- route map ----------
+   Outdoor walks, runs, rides and hikes get a map like Fitness: a card under Heart Rate with the route on Apple Maps and
+   the weather under it, and a full-screen map behind it. The route is a random loop from the start point (green dot)
+   around and back past it (red dot), on streets with sidewalks only, exactly as long as the logged distance.
+   - Streets come from OpenStreetMap (Overpass API). Only sidewalks, crosswalks, streets tagged with a sidewalk and
+     footpaths running alongside a street are walked; motorways, trunk and primary roads (highways) are not, and neither
+     is anything right alongside one.
+   - The app is for Northern Virginia only: start points and search stay inside it, and street data is kept on the phone
+     in ~1 km tiles for three weeks (and fetched around home in the background), so most routes need no download.
+   - Loops are found with A* through 2-3 random turning points on a circle sized to the distance; a street already
+     walked costs more, so the way back differs. The few metres left over are walked on past the start.
+   - The map is Apple Maps (MapKit JS) once a MapKit JS token is set (share button > Apple Maps Key, or MAPKIT_TOKEN
+     below). Until then, or if Apple turns the token down, it is OpenStreetMap tiles through Leaflet.
+   - The line is coloured by pace from the splits like Fitness: yellow at the usual pace, green quicker, red slower. */
+const MAPT=['Outdoor Walk','Outdoor Run','Outdoor Cycle','Hiking'];
+const hasMap=l=>MAPT.includes(l.type)&&!!unitOf(l.f)&&nm(l.f.dist)>0;
+const uMeters=l=>unitOf(l.f)==='KM'?1000:1609.344;
+const rtM=l=>nm(l.f.dist)*uMeters(l);
+const DEF_S=[39.0062,-77.4283]; // Sterling, VA, until a start point is picked (it is then remembered as home)
+const startOf=l=>(l.rt&&l.rt.s)||ST.home||DEF_S;
+const needRt=l=>hasMap(l)&&!(l.rt&&l.rt.p&&Math.abs(l.rt.m-rtM(l))<=Math.max(2,rtM(l)*.002));
+const RAD=Math.PI/180;
+const hav=(a,b)=>{const s=Math.sin((b[0]-a[0])*RAD/2)**2+Math.cos(a[0]*RAD)*Math.cos(b[0]*RAD)*Math.sin((b[1]-a[1])*RAD/2)**2;return 12742000*Math.asin(Math.min(1,Math.sqrt(s)))};
+const rng=s=>()=>{s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296};
+// Google encoded polyline at 1e-6 degrees (about 10 cm, so the line keeps its exact length), compact enough for localStorage
+function plEnc(a){let o='',pa=0,pb=0;const put=v=>{v=v<0?~(v<<1):v<<1;while(v>=32){o+=String.fromCharCode((32|(v&31))+63);v>>=5}o+=String.fromCharCode(v+63)};
+ a.forEach(([la,lo])=>{const A=Math.round(la*1e6),B=Math.round(lo*1e6);put(A-pa);put(B-pb);pa=A;pb=B});return o}
+function plDec(s){const o=[];let i=0,la=0,lo=0;const get=()=>{let r=0,sh=0,b;do{b=s.charCodeAt(i++)-63;r|=(b&31)<<sh;sh+=5}while(b>=32);return r&1?~(r>>1):r>>1};
+ while(i<s.length){la+=get();lo+=get();o.push([la/1e6,lo/1e6])}return o}
+const cumD=p=>{const c=[0];for(let i=1;i<p.length;i++)c.push(c[i-1]+hav(p[i-1],p[i]));return c};
+function ptAt(p,c,d){const n=c.length-1;if(d<=0)return p[0];if(d>=c[n])return p[n];let lo=0,hi=n;while(hi-lo>1){const m=(lo+hi)>>1;if(c[m]<=d)lo=m;else hi=m}
+ const t=(d-c[lo])/((c[hi]-c[lo])||1);return [p[lo][0]+(p[hi][0]-p[lo][0])*t,p[lo][1]+(p[hi][1]-p[lo][1])*t]}
+// Northern Virginia: Loudoun, Fairfax, Arlington, Alexandria, Prince William and the edges around them
+const NOVA={s:38.4,w:-78.1,n:39.4,e:-76.95},inNova=p=>p[0]>=NOVA.s&&p[0]<=NOVA.n&&p[1]>=NOVA.w&&p[1]<=NOVA.e;
+
+/* street data, cached on the phone in 0.01 x 0.0125 degree tiles (about 1.1 km square) */
+const BIGR='motorway|motorway_link|trunk|trunk_link|primary|primary_link',RDSR='residential|living_street|unclassified|tertiary|tertiary_link|secondary|secondary_link|service';
+const BIG=new RegExp('^('+BIGR+')$'),RDS=new RegExp('^('+RDSR+')$'),SWV=/^(both|left|right|yes)$/;
+const OVP=['https://overpass-api.de/api/interpreter','https://overpass.kumi.systems/api/interpreter','https://maps.mail.ru/osm/tools/overpass/api/interpreter','https://overpass.private.coffee/api/interpreter'];
+// 'sw' sidewalk, 'cx' crosswalk, 'rd' street tagged with a sidewalk (or a pedestrian street), 'fp' footpath with no
+// sidewalk tag (kept only where it runs alongside a street, so it is a sidewalk in all but name, or as a short link),
+// 'ref' any other street (never walked, only used to recognise those sidewalks), 'big' highway (never walked, and
+// nothing alongside it is either), '' anything else
+function wayKind(w){const t=w.tags;if(!t)return 'ref';const h=t.highway||'';if(BIG.test(h))return 'big';
+ if(/^(no|private|use_sidepath)$/.test(t.foot||'')||/^(no|private)$/.test(t.access||'')||t.area==='yes')return RDS.test(h)?'ref':'';
+ if(/^(footway|path|cycleway)$/.test(h))return t.footway==='sidewalk'?'sw':t.footway==='crossing'?'cx':'fp';if(h==='pedestrian')return 'rd';
+ if(RDS.test(h))return ['sidewalk','sidewalk:both','sidewalk:left','sidewalk:right'].some(k=>SWV.test(t[k]||''))?'rd':'ref';return ''}
+// one Overpass request for a box [s,w,n,e]: footpaths, streets with a sidewalk and highways come with their tags,
+// other streets only as lines (they are just for recognising sidewalks)
+async function overpass(b){const ok='[foot!~"^(no|private|use_sidepath)$"][access!~"^(no|private)$"]';
+ const q=`[out:json][timeout:90][bbox:${b.map(v=>v.toFixed(5)).join(',')}];way[highway~"^(footway|path|cycleway|pedestrian)$"][area!=yes]${ok}->.f;way[highway~"^(${RDSR})$"]->.r;`+
+  `way.r[~"^sidewalk(:both|:left|:right)?$"~"^(both|left|right|yes)$"]${ok}->.s;way[highway~"^(${BIGR})$"]->.b;(.f;.s;.b;);out body geom qt;(.r;-.s;);out skel geom qt;`;
+ let last;for(const u of OVP){const ac=new AbortController(),t=setTimeout(()=>ac.abort(),60000);
+  try{const r=await fetch(u,{method:'POST',body:'data='+encodeURIComponent(q),headers:{'Content-Type':'application/x-www-form-urlencoded'},signal:ac.signal});
+   if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();if(!Array.isArray(j.elements)||(!j.elements.length&&j.remark))throw new Error(j.remark||'bad reply');return j.elements}
+  catch(e){last=e}finally{clearTimeout(t)}}
+ throw Object.assign(new Error('street data'),{net:1,cause:last})}
+const TLA=.01,TLO=.0125,TTL=21*864e5,TILES=new Map();let IDB=null,NQ=Promise.resolve();
+const idb=()=>IDB||(IDB=new Promise(ok=>{try{const r=indexedDB.open('fit-streets',1);r.onupgradeneeded=()=>r.result.createObjectStore('t');r.onsuccess=()=>ok(r.result);r.onerror=()=>ok(null)}catch(e){ok(null)}}));
+const tGet=async k=>{const d=await idb();return d?new Promise(ok=>{try{const q=d.transaction('t').objectStore('t').get(k);q.onsuccess=()=>ok(q.result||null);q.onerror=()=>ok(null)}catch(e){ok(null)}}):null};
+const tPut=async(k,v)=>{const d=await idb();if(d)try{d.transaction('t','readwrite').objectStore('t').put(v,k)}catch(e){}};
+// every way within R metres of s: cached tiles are used as they are, the missing ones come in one request (the box
+// around all of them), and each tile keeps every way that reaches into it. Calls queue up, so a route asked for while
+// the background fetch is running waits for it and then finds its tiles cached.
+const streets=(s,R)=>NQ=NQ.catch(()=>{}).then(()=>streets1(s,R));
+async function streets1(s,R){const dLa=R/111195,dLo=dLa/Math.cos(s[0]*RAD),y0=Math.floor((s[0]-dLa)/TLA),y1=Math.floor((s[0]+dLa)/TLA),x0=Math.floor((s[1]-dLo)/TLO),x1=Math.floor((s[1]+dLo)/TLO),now=Date.now(),miss=[];
+ for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){const k=y+'_'+x;let t=TILES.get(k);if(!t){t=await tGet(k);if(t)TILES.set(k,t)}if(!t||now-t.t>TTL)miss.push([y,x])}
+ if(miss.length){const Y0=Math.min(...miss.map(m=>m[0])),Y1=Math.max(...miss.map(m=>m[0])),X0=Math.min(...miss.map(m=>m[1])),X1=Math.max(...miss.map(m=>m[1]));
+  const els=await overpass([Y0*TLA,X0*TLO,(Y1+1)*TLA,(X1+1)*TLO]),box=new Map();for(let y=Y0;y<=Y1;y++)for(let x=X0;x<=X1;x++)box.set(y+'_'+x,[]);
+  els.forEach(w=>{const g=(w.geometry||[]).filter(Boolean);if(!g.length)return;const la=g.map(p=>p.lat),lo=g.map(p=>p.lon);
+   for(let y=Math.max(Y0,Math.floor(Math.min(...la)/TLA));y<=Math.min(Y1,Math.floor(Math.max(...la)/TLA));y++)for(let x=Math.max(X0,Math.floor(Math.min(...lo)/TLO));x<=Math.min(X1,Math.floor(Math.max(...lo)/TLO));x++)box.get(y+'_'+x).push(w)});
+  box.forEach((v,k)=>{const t={t:now,els:v};TILES.set(k,t);tPut(k,t)})}
+ const seen=new Set(),out=[];for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++)(TILES.get(y+'_'+x)||{els:[]}).els.forEach(w=>{if(!seen.has(w.id)){seen.add(w.id);out.push(w)}});return out}
+
+/* walkable graph, in metres around the start */
+/* walkable graph, in metres around the start */
+function mkGraph(els,s){const ky=6371000*RAD,kx=ky*Math.cos(s[0]*RAD),px=g=>(g.lon-s[1])*kx,py=g=>(g.lat-s[0])*ky;
+ const X=[],Y=[],LA=[],LO=[],ix=new Map(),EA=[],EB=[],EL=[],seen=new Set(),put=(m,k,v)=>{let a=m.get(k);if(!a)m.set(k,a=[]);a.push(v)};
+ // street centre lines in 40 m grids: highways, and the ordinary streets an untagged footpath has to run alongside
+ const C=40,HG={m:new Map(),s:[]},SG={m:new Map(),s:[]};
+ els.forEach(w=>{const k=wayKind(w),G=k==='big'?HG:k==='ref'||k==='rd'?SG:null,g=w.geometry;if(w.type!=='way'||!G||!g)return;
+  for(let i=1;i<g.length;i++){if(!g[i-1]||!g[i])continue;const a=[px(g[i-1]),py(g[i-1])],b=[px(g[i]),py(g[i])],L=Math.hypot(b[0]-a[0],b[1]-a[1]);if(L<1)continue;const j=G.s.push([a,b,L])-1;
+   for(let cx=Math.floor(Math.min(a[0],b[0])/C);cx<=Math.floor(Math.max(a[0],b[0])/C);cx++)for(let cy=Math.floor(Math.min(a[1],b[1])/C);cy<=Math.floor(Math.max(a[1],b[1])/C);cy++)put(G.m,cx+'|'+cy,j)}});
+ // share of the segment lying within d metres of a line in grid G (and running the same way, if par)
+ const near=(G,ax,ay,bx,by,d,par)=>{const len=Math.hypot(bx-ax,by-ay);if(len<.5||!G.s.length)return 0;const ux=(bx-ax)/len,uy=(by-ay)/len,n=Math.max(1,Math.round(len/20));let hit=0;
+  for(let i=0;i<n;i++){const t=(i+.5)/n,x=ax+(bx-ax)*t,y=ay+(by-ay)*t,cx=Math.floor(x/C),cy=Math.floor(y/C);let f=false;
+   for(let dx=-1;dx<=1&&!f;dx++)for(let dy=-1;dy<=1&&!f;dy++){const a=G.m.get((cx+dx)+'|'+(cy+dy));if(a)for(const j of a){const[p,q,L]=G.s[j],vx=(q[0]-p[0])/L,vy=(q[1]-p[1])/L;
+    if(par&&Math.abs(ux*vx+uy*vy)<.87)continue;const u=Math.max(0,Math.min(L,(x-p[0])*vx+(y-p[1])*vy));if(Math.hypot(x-p[0]-u*vx,y-p[1]-u*vy)<=d){f=true;break}}}
+   if(f)hit++}return hit/n};
+ const node=(id,g)=>{let i=ix.get(id);if(i===undefined){i=X.length;ix.set(id,i);X.push(px(g));Y.push(py(g));LA.push(g.lat);LO.push(g.lon)}return i};
+ els.forEach(w=>{const k=wayKind(w),g=w.geometry,nd=w.nodes;if(w.type!=='way'||!g||!nd||!/^(sw|cx|rd|fp)$/.test(k))return;
+  let wl=0;if(k==='fp')for(let i=1;i<g.length;i++)if(g[i-1]&&g[i])wl+=Math.hypot(px(g[i])-px(g[i-1]),py(g[i])-py(g[i-1]));
+  for(let i=1;i<nd.length;i++){if(!g[i-1]||!g[i])continue;const a=node(nd[i-1],g[i-1]),b=node(nd[i],g[i]);if(a===b)continue;const key=a<b?a+'_'+b:b+'_'+a;if(seen.has(key))continue;
+   const ax=X[a],ay=Y[a],bx=X[b],by=Y[b],L=Math.hypot(bx-ax,by-ay);
+   // a footpath counts where it runs alongside a street (within 25 m), or if the whole path is a short link
+   if(k==='fp'&&wl>40&&near(SG,ax,ay,bx,by,25,L>30)<=.5)continue;
+   // nothing that runs alongside a highway (within 30 m, same direction); crosswalks over one are fine
+   if((k==='sw'||k==='fp')&&near(HG,ax,ay,bx,by,30,true)>.5)continue;
+   seen.add(key);EA.push(a);EB.push(b);EL.push(L)}});
+ // a sidewalk that stops a few metres short of another one (a gap in the mapping) is joined to it
+ const n0=X.length,nb=Array.from({length:n0},()=>[]),NG=new Map(),W=15;EA.forEach((a,e)=>{nb[a].push(EB[e]);nb[EB[e]].push(a)});
+ for(let i=0;i<n0;i++)if(nb[i].length)put(NG,Math.floor(X[i]/W)+'|'+Math.floor(Y[i]/W),i);
+ for(let i=0;i<n0;i++){if(nb[i].length!==1)continue;const cx=Math.floor(X[i]/W),cy=Math.floor(Y[i]/W);let b=-1,bd=12;
+  for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++){const a=NG.get((cx+dx)+'|'+(cy+dy));if(a)for(const j of a){if(j===i||nb[i].includes(j)||nb[i].some(k=>nb[k].includes(j)))continue;const d=Math.hypot(X[j]-X[i],Y[j]-Y[i]);if(d<bd){bd=d;b=j}}}
+  if(b>=0){EA.push(i);EB.push(b);EL.push(bd);nb[i].push(b);nb[b].push(i)}}
+ const par=Int32Array.from({length:n0},(_,i)=>i),fd=i=>{while(par[i]!==i){par[i]=par[par[i]];i=par[i]}return i};EA.forEach((a,e)=>{const p=fd(a),q=fd(EB[e]);if(p!==q)par[p]=q});
+ return {X,Y,LA,LO,EA,EB,EL,fd,s,kx,ky}}
+// the route starts on the nearest sidewalk within 400 m, on a network big enough for the loop if there is one
+function snap(G,Lm){const{X,Y,EA,EB,EL}=G,ln=new Map();EA.forEach((a,e)=>{const r=G.fd(a);ln.set(r,(ln.get(r)||0)+EL[e])});let mx=0;ln.forEach(v=>{if(v>mx)mx=v});const want=Math.min(Lm*.4,mx*.5);
+ let b1=null,b2=null;for(let e=0;e<EA.length;e++){const a=EA[e],b=EB[e],dx=X[b]-X[a],dy=Y[b]-Y[a],L2=dx*dx+dy*dy,t=L2?Math.max(0,Math.min(1,-(X[a]*dx+Y[a]*dy)/L2)):0,d=Math.hypot(X[a]+t*dx,Y[a]+t*dy);
+  if(d>400)continue;const c={e,t,d};if(ln.get(G.fd(a))>=want&&(!b1||d<b1.d))b1=c;if(!b2||d<b2.d)b2=c}
+ const c=b1||b2;if(!c)return -1;const{e,t}=c,a=EA[e],b=EB[e],sl=EL[e]*t;if(sl<1)return a;if(EL[e]-sl<1)return b;
+ const i=X.length,x=X[a]+(X[b]-X[a])*t,y=Y[a]+(Y[b]-Y[a])*t;X.push(x);Y.push(y);G.LA.push(G.s[0]+y/G.ky);G.LO.push(G.s[1]+x/G.kx);
+ EB[e]=i;EL[e]=sl;EA.push(i);EB.push(b);EL.push(Math.hypot(X[b]-x,Y[b]-y));return i}
+function prep(G,s0){const n=G.X.length,adj=Array.from({length:n},()=>[]);G.EA.forEach((a,e)=>{adj[a].push(G.EB[e],e);adj[G.EB[e]].push(a,e)});G.adj=adj;
+ const inC=new Uint8Array(n),q=[s0];inC[s0]=1;while(q.length){const a=adj[q.pop()];for(let k=0;k<a.length;k+=2)if(!inC[a[k]]){inC[a[k]]=1;q.push(a[k])}}
+ const W=80,g=new Map();for(let i=0;i<n;i++)if(inC[i]){const k=Math.floor(G.X[i]/W)+'|'+Math.floor(G.Y[i]/W);let a=g.get(k);if(!a)g.set(k,a=[]);a.push(i)}
+ // nearest node on the start's network, searching outward ring by ring
+ G.near=(x,y)=>{const cx=Math.floor(x/W),cy=Math.floor(y/W);let b=s0,bd=Infinity;const v=(dx,dy)=>{const a=g.get((cx+dx)+'|'+(cy+dy));if(a)for(const i of a){const d=Math.hypot(G.X[i]-x,G.Y[i]-y);if(d<bd){bd=d;b=i}}};
+  for(let r=0;r<160;r++){if(!r)v(0,0);else{for(let d=-r;d<=r;d++){v(d,-r);v(d,r)}for(let d=1-r;d<r;d++){v(-r,d);v(r,d)}}if(bd<=r*W)break}return b}}
+// A*; a street already walked costs 5x, so the way back takes different streets where it can
+function aStar(G,s,t,use){const{X,Y,adj,EL,EA,EB}=G,n=X.length;if(!G.st||G.st.length!==n){G.st=new Int32Array(n);G.cl=new Int32Array(n);G.gs=new Float64Array(n);G.pe=new Int32Array(n);G.sn=0}
+ const st=G.st,cl=G.cl,gs=G.gs,pe=G.pe,S=++G.sn,tx=X[t],ty=Y[t],hf=[],hn=[];
+ const push=(f,i)=>{let k=hf.length;hf.push(f);hn.push(i);while(k>0){const p=(k-1)>>1;if(hf[p]<=f)break;hf[k]=hf[p];hn[k]=hn[p];k=p}hf[k]=f;hn[k]=i};
+ const pop=()=>{const r=hn[0],lf=hf.pop(),li=hn.pop(),m=hf.length;if(m){let k=0;for(;;){let c=2*k+1;if(c>=m)break;if(c+1<m&&hf[c+1]<hf[c])c++;if(hf[c]>=lf)break;hf[k]=hf[c];hn[k]=hn[c];k=c}hf[k]=lf;hn[k]=li}return r};
+ st[s]=S;gs[s]=0;pe[s]=-1;push(Math.hypot(X[s]-tx,Y[s]-ty),s);
+ while(hf.length){const i=pop();if(cl[i]===S)continue;cl[i]=S;if(i===t)break;const a=adj[i],gi=gs[i];
+  for(let k=0;k<a.length;k+=2){const j=a[k];if(cl[j]===S)continue;const e=a[k+1],g=gi+EL[e]*(1+4*use[e]);if(st[j]!==S||g<gs[j]){st[j]=S;gs[j]=g;pe[j]=e;push(g+Math.hypot(X[j]-tx,Y[j]-ty),j)}}}
+ if(cl[t]!==S)return null;const es=[];for(let i=t;i!==s;){const e=pe[i];es.push(e);i=EA[e]===i?EB[e]:EA[e]}return es.reverse()}
+// one loop: the start and 2-3 turning points sit on a circle heading off in a random direction; the circle is resized
+// (scaled, then halved between a too-short and a too-long size) until the walked length lands between 94% and top
+function tryLoop(G,s0,Lm,R,top){const k=R()<.55?2:3,dir=R()<.5?1:-1,phi=R()*2*Math.PI,V=[];
+ for(let j=1;j<=k;j++)V.push([phi+Math.PI+dir*(j*2*Math.PI/(k+1)+(R()-.5)*.6),.85+R()*.3]);
+ let rho=Lm/((k+1)*2*Math.sin(Math.PI/(k+1))*1.3),lo=0,hi=Infinity,best=null;
+ for(let it=0;it<8;it++){const cx=G.X[s0]+rho*Math.cos(phi),cy=G.Y[s0]+rho*Math.sin(phi),pts=[s0,...V.map(([a,f])=>G.near(cx+rho*f*Math.cos(a),cy+rho*f*Math.sin(a))),s0];
+  const use=new Uint16Array(G.EL.length),es=[];let bad=false;
+  for(let i=1;i<pts.length;i++){if(pts[i]===pts[i-1])continue;const p=aStar(G,pts[i-1],pts[i],use);if(!p){bad=true;break}p.forEach(e=>use[e]++);es.push(...p)}
+  if(bad)break;if(!es.length){rho*=2;continue}
+  let len=0,ov=0;const cnt=new Map();es.forEach(e=>{len+=G.EL[e];const c=(cnt.get(e)||0)+1;cnt.set(e,c);if(c>1)ov+=G.EL[e]});
+  const c={es,len,ov:ov/len};if(!best||(c.len<=top)>(best.len<=top)||((c.len<=top)===(best.len<=top)&&Math.abs(c.len-Lm*.975)<Math.abs(best.len-Lm*.975)))best=c;
+  if(c.len>=Lm*.94&&c.len<=top)return c;if(c.len<Lm)lo=Math.max(lo,rho);else hi=Math.min(hi,rho);
+  rho=lo&&hi<Infinity?(lo+hi)/2:rho*Math.min(2.5,Math.max(.4,Lm*.975/c.len))}
+ return best}
+// the walk carries on past the start for the last stretch, so the red end dot sits a little way along from the green
+// start dot (at least gap metres) and the line is exactly Lm long. A loop that is far too short is walked in laps;
+// one that is too long (only for tiny distances) becomes an out and back.
+const endGap=Lm=>Math.min(25,Math.max(8,Lm*.01));
+function fitLen(loop,Lm){const c=cumD(loop),len=c[c.length-1];if(!(len>1))return null;
+ const seg=h=>{const o=[];for(let i=1;i<loop.length&&c[i]<h;i++)o.push(loop[i]);o.push(ptAt(loop,c,h));return o};
+ if(len>Lm+1){const o=seg(Lm/2);return {p:[loop[0],...o,...o.slice(0,-1).reverse(),loop[0]],lp:Lm}}
+ const n=Math.max(1,Math.floor((Lm-endGap(Lm))/len+1e-9));let d=Lm-n*len;const o=[];for(let k=0;k<n;k++)(k?loop.slice(1):loop).forEach(p=>o.push(p));
+ while(d>len){o.push(...loop.slice(1));d-=len}if(d>.5)o.push(...seg(d));return {p:o,lp:len}}
+async function makeLoop(s,Lm,seed){const P=Math.max(1,Math.ceil(Lm/18000)),Lp=Lm/P,top=Lp-endGap(Lm)/P,R=Math.round(Math.min(6000,Math.max(700,.3*Lp+400)));
+ const G=mkGraph(await streets(s,R),s),s0=snap(G,Lm);if(s0<0)throw Object.assign(new Error('no sidewalks'),{nosw:1});prep(G,s0);
+ const rnd=rng(seed),t0=performance.now(),pts=[[G.LA[s0],G.LO[s0]]];
+ for(let p=0;p<P;p++){const cs=[];
+  for(let a=0;a<18;a++){const c=tryLoop(G,s0,Lp,rnd,top);if(c){c.ok=c.len<=top;c.sc=Math.abs(c.len-Lp*.975)/Lp+1.5*c.ov;cs.push(c);if(c.ok&&c.len>=Lp*.94&&c.ov<.08)break}
+   // about 5 s per petal once there is a loop to use, 12 s at most on a very big street network
+   const el=performance.now()-t0;if((el>5000*(p+1)/P&&cs.some(c=>c.ok))||(el>12000*(p+1)/P&&cs.length))break;await new Promise(r=>setTimeout(r,0))}
+  const c=cs.filter(c=>c.ok).sort((a,b)=>a.sc-b.sc)[0]||cs.filter(c=>c.len<=Lp+1).sort((a,b)=>b.len-a.len)[0]||cs.sort((a,b)=>a.len-b.len)[0];if(!c)throw Object.assign(new Error('no loop'),{nosw:1});
+  let at=s0;c.es.forEach(e=>{at=G.EA[e]===at?G.EB[e]:G.EA[e];pts.push([G.LA[at],G.LO[at]])})}
+ const r=fitLen(pts,Lm);if(!r)throw Object.assign(new Error('no loop'),{nosw:1});r.p=r.p.filter((q,i,a)=>!i||q[0]!==a[i-1][0]||q[1]!==a[i-1][1]);return r}
+
+/* places: Apple Maps search and addresses when MapKit is up, otherwise Photon (then Nominatim); Northern Virginia only */
+let MKS=null;
+const novaRegion=()=>new mapkit.CoordinateRegion(new mapkit.Coordinate((NOVA.s+NOVA.n)/2,(NOVA.w+NOVA.e)/2),new mapkit.CoordinateSpan(NOVA.n-NOVA.s,NOVA.e-NOVA.w));
+async function geoFind(q){
+ if(MKREADY)try{if(!MKS)MKS=new mapkit.Search({language:'en',region:novaRegion(),limitToCountries:'US',includeQueries:false});
+  const rs=await new Promise((ok,no)=>MKS.autocomplete(q,(e,d)=>e?no(e):ok((d&&d.results)||[]),{region:novaRegion()}));
+  const f=rs.filter(x=>x.coordinate).map(x=>({ll:[x.coordinate.latitude,x.coordinate.longitude],t:(x.displayLines||[])[0]||q,s:(x.displayLines||[]).slice(1).join(', ')})).filter(x=>inNova(x.ll));if(f.length)return f}catch(e){}
+ try{const r=await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(q)}&limit=8&lang=en&bbox=${NOVA.w},${NOVA.s},${NOVA.e},${NOVA.n}&lat=${DEF_S[0]}&lon=${DEF_S[1]}`);if(!r.ok)throw 0;const j=await r.json();
+  return (j.features||[]).map(f=>{const p=f.properties||{},c=f.geometry.coordinates,st=[p.housenumber,p.street].filter(Boolean).join(' ');return {ll:[c[1],c[0]],t:p.name||st||p.city||q,s:[p.name&&st,p.city||p.county,p.state].filter(Boolean).join(', ')}}).filter(x=>inNova(x.ll))}
+ catch(e){const r=await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=8&countrycodes=us&bounded=1&viewbox=${NOVA.w},${NOVA.n},${NOVA.e},${NOVA.s}&q=${encodeURIComponent(q)}`);const j=await r.json();
+  return j.map(x=>{const[a,...b]=String(x.display_name).split(', ');return {ll:[+x.lat,+x.lon],t:a,s:b.slice(0,3).join(', ')}}).filter(x=>inNova(x.ll))}}
+async function revGeo(s){
+ if(MKREADY)try{const p=await new Promise((ok,no)=>new mapkit.Geocoder({language:'en'}).reverseLookup(new mapkit.Coordinate(s[0],s[1]),(e,d)=>e?no(e):ok(((d&&d.results)||[])[0])));
+  if(p)return {nm:p.fullThoroughfare||[p.subThoroughfare,p.thoroughfare].filter(Boolean).join(' ')||p.name||'',city:p.locality||''}}catch(e){}
+ try{const r=await fetch(`https://photon.komoot.io/reverse?lat=${s[0]}&lon=${s[1]}&limit=1&lang=en`);const f=((await r.json()).features||[])[0];if(f){const p=f.properties||{};return {nm:[p.housenumber,p.street].filter(Boolean).join(' ')||p.name||'',city:p.city||''}}}catch(e){}
+ try{const r=await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&lat=${s[0]}&lon=${s[1]}`),j=await r.json(),a=j.address||{};return {nm:[a.house_number,a.road].filter(Boolean).join(' ')||j.name||'',city:a.city||a.town||a.village||a.hamlet||''}}catch(e){}
+ return null}
+// Apple Maps walking (or cycling) directions that trace the loop: start, up to 8 points along it, back to the start
+function amURL(l){const f=p=>p[0].toFixed(6)+','+p[1].toFixed(6);if(!l.rt||!l.rt.p){const s=startOf(l);return 'https://maps.apple.com/place?coordinate='+f(s)+'&name=Start'}
+ const p=plDec(l.rt.p),c=cumD(p),lp=Math.min(l.rt.lp||c[c.length-1],c[c.length-1]),n=Math.min(8,Math.max(3,Math.round(lp/400)));let u='https://maps.apple.com/directions?source='+f(p[0]);
+ for(let i=1;i<=n;i++)u+='&waypoint='+f(ptAt(p,c,lp*i/(n+1)));return u+'&destination='+f(p[0])+'&mode='+(l.type==='Outdoor Cycle'?'cycling':'walking')+'&avoid=highways,busy-roads'}
+function openURL(u){const a=document.createElement('a');a.href=u;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()}
+
+/* making a route for a log */
+const RJ=new Map(),RE=new Map(); // logs with a route on the way, and the last error for each
+async function genRoute(l){if(!hasMap(l))return;const tok={},s=startOf(l),m=rtM(l),seed=1+Math.floor(Math.random()*2147483646);RJ.set(l.id,tok);RE.delete(l.id);mapRefresh(l);
+ try{const r=await makeLoop(s,m,seed);if(RJ.get(l.id)!==tok)return;const o=l.rt||{};l.rt={s:s,m:m,p:plEnc(r.p),lp:Math.round(r.lp),seed:seed,nm:o.s&&hav(o.s,s)<1?o.nm:undefined};save()}
+ catch(e){if(RJ.get(l.id)!==tok)return;RE.set(l.id,e.nosw?'No sidewalks are mapped within 400 m of this start. Pick a start on a street with sidewalks.':e.net?'Couldn\u2019t reach the street data. Check your connection, then try New Route.':'Couldn\u2019t make a loop here. Try New Route.')}
+ finally{if(RJ.get(l.id)===tok){RJ.delete(l.id);if(needRt(l)&&!RE.has(l.id)&&l.rt&&l.rt.p)genRoute(l);else mapRefresh(l)}}}
+function setStart(l,s){if(!inNova(s)){toast('Pick a start in Northern Virginia.');return false}l.rt=Object.assign({},l.rt||{},{s:s,p:null,nm:undefined});ST.home=s;save();genRoute(l);
+ revGeo(s).then(r=>{if(!r||!l.rt||!l.rt.s||hav(l.rt.s,s)>=1)return;if(r.nm)l.rt.nm=r.nm;if(r.city){l.f.loc=r.city;patch(l,new Set(['loc']))}save();mapRefresh(l)});return true}
+// called after any committed edit: a new distance gets a new loop, new splits recolour the line
+function mapSync(l){if(!hasMap(l))return;if(needRt(l)&&!RJ.has(l.id))genRoute(l);else mapRefresh(l)}
+
+/* the map itself: Apple Maps (MapKit JS) with a token, OpenStreetMap through Leaflet without one */
+const MAPKIT_TOKEN=''; // a MapKit JS token can go here; one added in the app (share button > Apple Maps Key) is used first
+// CARTO's map tiles need this key since late August 2026 (without it every tile says "API KEY REQUIRED"). It is
+// meant to sit in the page: it goes out with every tile request. Free keys: carto.com/basemaps/apikey
+const CARTO_KEY='cb1_49nc_1_1e3ad36407ca7540dc59e873';
+// MapKit JS tokens are JWTs (three dot-separated parts, starting eyJ); anything else stored as one, such as a CARTO
+// key pasted into the Apple Maps dialog, is dropped so the map doesn't keep trying Apple Maps with it
+const isJWT=t=>/^[\w-]+\.[\w-]+\.[\w-]+$/.test(t);
+const MKK='fit-mapkit-token',noWS=s=>String(s||'').replace(/\s+/g,''),mkToken=()=>{let t='';try{t=noWS(localStorage.getItem(MKK));if(t&&!isJWT(t)){localStorage.removeItem(MKK);t=''}}catch(e){}t=t||noWS(MAPKIT_TOKEN);return isJWT(t)?t:''};
+let MKP=null,MKBAD='',MKREADY=false;
+// MapKit JS 5 (mapkit.init hands it the token); if Apple no longer serves 5, MapKit JS 6 (token on the script tag)
+function loadMapKit(){const tok=mkToken();if(!tok)return Promise.reject(new Error('no token'));if(MKBAD)return Promise.reject(new Error(MKBAD));if(MKP)return MKP;
+ const add=(src,ds)=>new Promise((ok,no)=>{const s=document.createElement('script');s.src=src;s.crossOrigin='anonymous';Object.assign(s.dataset,ds||{});s.onload=ok;s.onerror=()=>{s.remove();no(new Error('load'))};document.head.appendChild(s)});
+ const v5=()=>add('https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js').then(()=>{if(!window.mapkit||!mapkit.Map||!mapkit.init)throw new Error('mapkit');mapkit.init({authorizationCallback:d=>d(tok),language:'en'})});
+ const v6=()=>new Promise((ok,no)=>{window.__mkReady=ok;add('https://cdn.apple-mapkit.com/mk/6/mapkit.core.js',{libraries:'full-map',callback:'__mkReady',token:tok}).catch(no)});
+ MKP=Promise.race([v5().catch(v6),new Promise((ok,no)=>setTimeout(()=>no(new Error('timeout')),15000))]).then(()=>{if(!window.mapkit||!mapkit.Map)throw new Error('mapkit');
+  try{mapkit.addEventListener('error',ev=>mkFail(ev&&ev.status))}catch(e){}MKREADY=true;return mapkit});
+ MKP.catch(()=>{MKP=null});return MKP}
+// Apple turned the token down (or the quota ran out): carry on with OpenStreetMap
+function mkFail(st){if(MKBAD)return;MKBAD=st||'error';MKREADY=false;
+ toast(st==='Unauthorized'?'Apple Maps didn\u2019t accept the MapKit key, so the map is OpenStreetMap for now.':'Apple Maps isn\u2019t available right now, so the map is OpenStreetMap.');
+ if(MC)mapCard(MC.l);if(MS)sheetView(MS)}
+let LFP=null;
+const loadLeaflet=()=>{if(window.L&&window.L.map)return Promise.resolve(window.L);if(LFP)return LFP;
+ const one=b=>new Promise((ok,no)=>{const c=document.createElement('link'),s=document.createElement('script');c.rel='stylesheet';c.href=b+'leaflet.css';s.src=b+'leaflet.js';
+  s.onload=()=>window.L&&window.L.map?ok(window.L):no();s.onerror=()=>{c.remove();s.remove();no()};document.head.append(c,s)});
+ LFP=['https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/','https://unpkg.com/leaflet@1.9.4/dist/','https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/'].reduce((p,b)=>p.catch(()=>one(b)),Promise.reject()).catch(e=>{LFP=null;throw e});return LFP}
+// a view with the same few calls on either engine: draw(geom,width), fit(padding t,r,b,l), center(), go(point,metres
+// across), pan(point), type('std'|'sat'), on('tap'|'press',fn(point)), size(), kill()
+async function mkView(el,live){if(mkToken()&&!MKBAD)try{await loadMapKit();if(!MKBAD)return viewMK(el,live)}catch(e){}return viewLF(await loadLeaflet(),el,live)}
+function viewMK(el,live){const M=mapkit,FV=M.FeatureVisibility,CS=M.ColorScheme||M.Map.ColorSchemes,MT=M.MapType||M.Map.MapTypes,C=p=>new M.Coordinate(p[0],p[1]);
+ const map=new M.Map(el,{colorScheme:CS.Dark,mapType:MT.Standard,isRotationEnabled:live,isScrollEnabled:live,isZoomEnabled:live,showsCompass:live?FV.Adaptive:FV.Hidden,showsScale:FV.Hidden,
+  showsMapTypeControl:false,showsZoomControl:false,showsUserLocationControl:false,showsPointsOfInterest:false});
+ try{map.pointOfInterestFilter=M.PointOfInterestFilter.filterExcludingAllCategories}catch(e){}
+ const AP=M.Annotation.DisplayPriority||{},AC=M.Annotation.CollisionMode||{};let ov=[],an=[],pts=null;
+ const dot=(p,k)=>new M.Annotation(C(p),()=>{const d=document.createElement('div');d.className='rdw';d.innerHTML=`<i class="rdot ${k}"></i>`;return d},
+  {size:{width:13,height:13},enabled:false,calloutEnabled:false,animates:false,displayPriority:AP.Required,collisionMode:AC.None});
+ const at=ev=>{const c=ev&&ev.pointOnPage?map.convertPointOnPageToCoordinate(ev.pointOnPage):map.center;return [c.latitude,c.longitude]};
+ return {mk:1,
+  draw(g,w){if(ov.length)map.removeOverlays(ov);if(an.length)map.removeAnnotations(an);ov=[];an=[];pts=g.P||[g.s];
+   if(g.P){const st=(c,x)=>new M.Style(Object.assign({lineWidth:w,strokeColor:c,lineCap:'round',lineJoin:'round'},x));
+    ov.push(new M.PolylineOverlay(g.P.map(C),{style:st('#000',{lineWidth:w+2,strokeOpacity:.3}),enabled:false}));
+    for(let i=0;i<g.col.length;i++)ov.push(new M.PolylineOverlay([C(g.P[i]),C(g.P[i+1])],{style:st(g.col[i]),enabled:false}));map.addOverlays(ov);an.push(dot(g.s,'g'),dot(g.e,'r'))}
+   else an.push(dot(g.s,'g'));map.addAnnotations(an)},
+  fit(pd){if(!pts)return;if(pts.length<2)return this.go(pts[0],900);map.showItems(ov,{animate:false,padding:new M.Padding(pd[0],pd[1],pd[2],pd[3])})},
+  center(){const c=map.center;return [c.latitude,c.longitude]},
+  go(p,m){const d=m/111195;map.setRegionAnimated(new M.CoordinateRegion(C(p),new M.CoordinateSpan(d*.75,d/Math.cos(p[0]*RAD))),true)},
+  pan(p){map.setCenterAnimated(C(p),true)},type(t){map.mapType=t==='sat'?MT.Hybrid:MT.Standard},
+  on(t,fn){map.addEventListener(t==='tap'?'single-tap':'long-press',ev=>fn(at(ev)))},size(){},kill(){map.destroy()}}}
+function viewLF(LF,el,live){const cls=el.className,map=LF.map(el,Object.assign({zoomControl:false,attributionControl:false,zoomSnap:0,preferCanvas:true},live?{}:{dragging:false,touchZoom:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,fadeAnimation:false}));
+ LF.control.attribution({position:live?'topright':'bottomright',prefix:false}).addTo(map);
+ const cdb=k=>LF.tileLayer('https://{s}.basemaps.cartocdn.com/'+k+'/{z}/{x}/{y}{r}.png?key='+CARTO_KEY,{subdomains:'abcd',maxZoom:20,attribution:'\u00a9 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> \u00a9 <a href="https://carto.com/attributions">CARTO</a>'});
+ const std=cdb('dark_all').addTo(map),sat=LF.layerGroup([LF.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Imagery \u00a9 Esri'}),cdb('dark_only_labels')]);
+ const lay=LF.layerGroup().addTo(map),dot=(p,k)=>LF.marker(p,{icon:LF.divIcon({className:'',html:`<i class="rdot ${k}"></i>`,iconSize:[0,0]}),interactive:false,keyboard:false}).addTo(lay);let pts=null;
+ return {draw(g,w){lay.clearLayers();pts=g.P||[g.s];if(g.P){const st={weight:w,opacity:1,lineCap:'round',lineJoin:'round',interactive:false};LF.polyline(g.P,{...st,color:'#000',opacity:.3,weight:w+2}).addTo(lay);
+    for(let i=0;i<g.col.length;i++)LF.polyline([g.P[i],g.P[i+1]],{...st,color:g.col[i]}).addTo(lay);dot(g.s,'g');dot(g.e,'r')}else dot(g.s,'g')},
+  fit(pd){if(!pts||!el.clientWidth)return;if(pts.length<2)return this.go(pts[0],900);map.fitBounds(LF.latLngBounds(pts),{paddingTopLeft:[pd[3],pd[0]],paddingBottomRight:[pd[1],pd[2]],maxZoom:17,animate:false})},
+  center(){const c=map.getCenter();return [c.lat,c.lng]},
+  go(p,m){map.setView(p,Math.min(18,Math.log2(156543*Math.cos(p[0]*RAD)*(el.clientWidth||360)/m)))},pan(p){map.panTo(p)},
+  type(t){if(t==='sat'){map.removeLayer(std);sat.addTo(map)}else{map.removeLayer(sat);std.addTo(map)}},
+  on(t,fn){map.on(t==='tap'?'click':'contextmenu',ev=>fn([ev.latlng.lat,ev.latlng.lng]))},size(){map.invalidateSize(false)},kill(){map.remove();el.className=cls;el.innerHTML=''}}}
+// route in short pieces (8 m or more, ~500 at most), each coloured by pace: the splits blended 80 m either side of each
+// split, a slow wobble and a little jitter per piece (the beaded look of the Fitness line). Yellow is the walk's
+// middle pace; quicker stretches go green, slower ones orange and red.
+const PCOL=[[76,217,100],[154,207,57],[249,199,3],[250,150,14],[255,69,58]];
+const pcol=t=>{const x=Math.max(0,Math.min(1,t))*4,i=Math.min(3,Math.floor(x)),u=x-i;return rgb(PCOL[i].map((v,j)=>v+(PCOL[i+1][j]-v)*u))};
+function rtGeom(l){if(!l.rt||!l.rt.p)return {s:startOf(l)};const raw=plDec(l.rt.p),c0=cumD(raw),L=c0[c0.length-1],st=Math.max(8,L/500),P=[raw[0]];
+ for(let i=1;i<raw.length;i++){const a=raw[i-1],b=raw[i],k=Math.max(1,Math.round((c0[i]-c0[i-1])/st));for(let j=1;j<=k;j++)P.push([a[0]+(b[0]-a[0])*j/k,a[1]+(b[1]-a[1])*j/k])}
+ const c=cumD(P),U=uMeters(l),sp=(l.f.sp||[]).map(x=>pPace(x.p)).filter(x=>x>0),avg=pPace(l.f.pace)||600,R=rng(l.rt.seed||1),f1=R()*6.28,f2=R()*6.28,f3=R()*6.28;
+ const base=d=>{const n=sp.length;if(!n)return avg;const i=Math.min(n-1,Math.floor(d/U)),fr=d-i*U;if(i>0&&fr<80)return sp[i-1]+(sp[i]-sp[i-1])*(.5+fr/160);if(i<n-1&&U-fr<80)return sp[i]+(sp[i+1]-sp[i])*(.5-(U-fr)/160);return sp[i]};
+ const v=[];for(let i=1;i<P.length;i++){const d=(c[i-1]+c[i])/2;v.push(base(d)*(1+.04*(.6*Math.sin(d/190+f1)+.3*Math.sin(d/61+f2)+.1*Math.sin(d/23+f3)))*(1+.025*(R()+R()-1)))}
+ const so=[...v].sort((a,b)=>a-b),q=f=>so[Math.min(so.length-1,Math.floor(so.length*f))],md=q(.5),sd=Math.max(q(.95)-md,md-q(.05),md*.035);
+ return {P,col:v.map(x=>pcol(.5+(x-md)/(2*sd))),s:raw[0],e:raw[raw.length-1]}}
+const mapMsg=(l,o)=>o.bad?'<span>The map couldn\u2019t load. Check your connection.</span>':RJ.has(l.id)?'<i class="spn"></i><span>Finding a loop on sidewalks\u2026</span>':RE.has(l.id)?'<span>'+esc(RE.get(l.id))+'</span>':'';
+function mapRefresh(l){if(MC&&MC.l===l)cardDraw(MC);if(MS&&MS.l===l)sheetDraw(MS,false)}
+
+/* the Map card on the workout page: the route on a map inset in the card, the weather under it, like Fitness */
+const WXI={th:'<svg viewBox="0 0 7 12" aria-hidden="true"><path d="M2.4 7.3V2a1.1 1.1 0 0 1 2.2 0v5.3a2.2 2.2 0 1 1-2.2 0z" fill="none" stroke="currentColor" stroke-width=".9"/><path d="M5.6 2.4h1.1M5.6 3.9h1.1M5.6 5.4h1.1" stroke="currentColor" stroke-width=".8"/><circle cx="3.5" cy="9.2" r="1.05" fill="currentColor"/></svg>',
+ hu:'<svg viewBox="0 0 14 10" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M.6 2.2c1.4-1 2.7-1 4.1 0s2.7 1 4.1 0"/><path d="M.6 5c1.4-1 2.7-1 4.1 0s2.4.9 3.6.3"/><path d="M.6 7.8c1.4-1 2.7-1 4.1 0"/><path d="M11 3.6s-2 2.3-2 3.7a2 2 0 0 0 4 0c0-1.4-2-3.7-2-3.7z"/></g></svg>',
+ sun:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#ffd60a"/><path d="M12 1.8v2.6M12 19.6v2.6M1.8 12h2.6M19.6 12h2.6M4.8 4.8l1.8 1.8M17.4 17.4l1.8 1.8M4.8 19.2l1.8-1.8M17.4 6.6l1.8-1.8" stroke="#ffd60a" stroke-width="2" stroke-linecap="round"/></svg>'};
+const mapCardHTML=L=>`
+ <h3>Map ${chev}</h3>
+ <div class="card mpcard"><div class="mpc" id="mpc" role="button" tabindex="0" aria-label="Route map. Opens the full map"><div class="mpv"></div><div class="mpo"></div></div>
+ <div class="mpw"><div><label>${WXI.th}Temp</label><div class="v">${WXI.sun}${e('wx')}</div></div><div><label>${WXI.hu}Humidity</label><div class="v">${e('hum')}</div></div></div></div>
+ <div class="mpws">Learn more about <u>${e('wxsrc')}</u></div>`;
+let MC=null;
+function mapCard(l){if(MC){try{MC.ro&&MC.ro.disconnect();MC.v&&MC.v.kill()}catch(e){}MC=null}const box=$('mpc');if(!box)return;
+ const o={l:l,box:box},el=box.querySelector('.mpv');MC=o;cardDraw(o);if(needRt(l)&&!RJ.has(l.id)&&!RE.has(l.id))genRoute(l);
+ // the map is made once the card has a size (the page is built before it is shown), and refitted if the size changes
+ o.ro=new ResizeObserver(()=>{if(!el.clientWidth||!el.clientHeight)return;if(o.v){o.v.size();cardFit(o)}
+  else if(!o.mk){o.mk=1;mkView(el,false).then(v=>{if(MC!==o)return v.kill();o.v=v;cardDraw(o)}).catch(()=>{if(MC===o){o.bad=true;cardDraw(o)}})}});o.ro.observe(el)}
+const cardFit=o=>o.v&&o.v.fit([22,24,22,24]);
+function cardDraw(o){const l=o.l,busy=RJ.has(l.id)&&!o.bad;o.box.classList.toggle('busy',busy);o.box.classList.toggle('err',!busy&&(o.bad||RE.has(l.id)));o.box.querySelector('.mpo').innerHTML=mapMsg(l,o);
+ if(o.v){o.v.draw(rtGeom(l),3);cardFit(o)}}
+
+/* full-screen map: share and close buttons, the title, the map type button; everything else sits behind share */
+let MS=null;
+const CLOSEI=glyphs([['M-7.4 -7.4L7.4 7.4M7.4 -7.4L-7.4 7.4',2.1]]);
+const MPI={map:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5L9 4l6 2.5L20.5 4v13.5L15 20l-6-2.5L3.5 20zM9 4v13.5M15 6.5V20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>',
+ globe:'<svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5s-1.2 6.1-3.8 8.5c-2.6-2.4-3.8-5.2-3.8-8.5S9.4 5.9 12 3.5z"/></g></svg>',
+ ck:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ find:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>',
+ loc:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2L20.5 3.5l-7.7 17-2.2-7.1z"/></svg>'};
+function openMap(){if(MS||!cur||!hasMap(cur))return;const l=cur,w=document.createElement('div');w.className='mps';
+ w.innerHTML=`<div class="mpd"></div><div class="mpg" role="dialog" aria-modal="true" aria-label="Route map"><div class="mpm"></div><div class="mpo"></div>
+ <svg class="mppin" viewBox="0 0 34 46" aria-hidden="true"><path d="M17 45C17 45 2 27.5 2 16.5a15 15 0 0 1 30 0C32 27.5 17 45 17 45z" fill="#30d158" stroke="#fff" stroke-width="2.5"/><circle cx="17" cy="16.5" r="5.5" fill="#fff"/></svg>
+ <button class="rb mpsh" data-a="share" aria-label="Share">${SHAREI}</button><div class="mpt"></div><button class="rb mpcl" data-a="close" aria-label="Close">${CLOSEI}</button>
+ <button class="mpty" data-a="type" aria-label="Map type">${MPI.map}</button>
+ <div class="mpk"><form class="mpf" role="search">${MPI.find}<input type="search" placeholder="Search Northern Virginia" enterkeyhint="search" autocomplete="off" spellcheck="false" aria-label="Search for a start point"></form><div class="mpres"></div>
+  <div class="mph">Move the map so the pin sits on your start.</div>
+  <div class="mpr"><button data-a="loc">${MPI.loc}My Location</button><button class="mpset" data-a="set">Start Here</button></div>
+  <button class="mpcn" data-a="cancel">Cancel</button></div></div>`;
+ $('app').appendChild(w);const o={l:l,w:w,pick:false,type:'std'};MS=o;sheetDraw(o,false);
+ const inp=w.querySelector('.mpk input'),res=w.querySelector('.mpres');
+ const find=q=>{const k=o.fk={};res.innerHTML='<div class="mpq">Searching\u2026</div>';
+  geoFind(q).then(f=>{if(o.fk!==k)return;o.found=f;res.innerHTML=f.length?f.slice(0,6).map((p,i)=>`<button type="button" data-i="${i}"><b>${esc(p.t)}</b><small>${esc(p.s)}</small></button>`).join(''):'<div class="mpq">No matches in Northern Virginia.</div>'})
+   .catch(()=>{if(o.fk===k)res.innerHTML='<div class="mpq">Search isn\u2019t available right now.</div>'})};
+ inp.addEventListener('input',()=>{clearTimeout(o.ft);const q=inp.value.trim();if(q.length<3){o.fk=null;res.innerHTML='';return}o.ft=setTimeout(()=>find(q),300)});
+ w.querySelector('form').addEventListener('submit',ev=>{ev.preventDefault();clearTimeout(o.ft);const q=inp.value.trim();if(q)find(q)});
+ w.addEventListener('click',ev=>{const r=ev.target.closest('.mpres button');if(r){const p=o.found&&o.found[+r.dataset.i];if(p&&o.v)o.v.go(p.ll,500);o.fk=null;res.innerHTML='';inp.blur();return}
+  const b=ev.target.closest('[data-a]');if(!b)return;const a=b.dataset.a;
+  if(a==='close')closeMap();else if(a==='share')shareMenu(o);else if(a==='type')typeMenu(o);else if(a==='cancel')pickMode(o,false);
+  else if(a==='loc'){if(!navigator.geolocation)return toast('Location isn\u2019t available here.');b.disabled=true;
+   navigator.geolocation.getCurrentPosition(p=>{b.disabled=false;if(MS===o&&o.v)o.v.go([p.coords.latitude,p.coords.longitude],500)},()=>{b.disabled=false;toast('Couldn\u2019t get your location.')},{enableHighAccuracy:true,timeout:12000,maximumAge:60000})}
+  else if(a==='set'&&o.v){const c=o.v.center();if(setStart(l,[+c[0].toFixed(6),+c[1].toFixed(6)]))pickMode(o,false)}});
+ w.querySelector('.mpd').addEventListener('click',closeMap);
+ void w.offsetWidth;requestAnimationFrame(()=>w.classList.add('on'));sheetView(o)}
+// (re)make the sheet's map, e.g. after Apple Maps turned the token down
+function sheetView(o){if(o.v){try{o.v.kill()}catch(e){}o.v=null}o.bad=false;o.key=null;
+ mkView(o.w.querySelector('.mpm'),true).then(v=>{if(MS!==o)return v.kill();o.v=v;v.type(o.type);v.on('tap',p=>{if(o.pick)v.pan(p)});v.on('press',p=>{if(o.pick)v.pan(p);else pickMode(o,true,p)});sheetDraw(o,true)})
+  .catch(()=>{if(MS===o){o.bad=true;sheetDraw(o,false)}})}
+function sheetDraw(o,fit){const l=o.l,g=o.w.querySelector('.mpg'),busy=RJ.has(l.id)&&!o.bad;g.classList.toggle('busy',busy);g.classList.toggle('err',!busy&&(o.bad||RE.has(l.id)));g.querySelector('.mpo').innerHTML=mapMsg(l,o);
+ o.w.querySelector('.mpt').textContent=`${l.f.dist} ${l.f.distu} ${l.type}`;
+ // the view follows the route when it changes (new loop, new start); a recolour leaves it where it is
+ if(!o.v)return;o.v.draw(rtGeom(l),5);const key=(l.rt&&l.rt.p)||startOf(l).join();if((fit||key!==o.key)&&!o.pick)sheetFit(o);o.key=key}
+const sheetFit=o=>o.v&&o.v.fit([118,34,60,34]);
+// pick mode: a pin in the middle of the map and a search panel; touch and hold on the map goes straight here
+function pickMode(o,on,at){o.pick=on;o.w.classList.toggle('pick',on);const inp=o.w.querySelector('.mpk input');
+ if(on){if(o.v)o.v.go(at||startOf(o.l),800)}else{inp.value='';o.fk=null;o.w.querySelector('.mpres').innerHTML='';inp.blur();sheetFit(o)}}
+// an iOS action sheet over the map; resolves with the chosen action ('' for Cancel)
+function actions(o,items){const m=document.createElement('div');m.className='mpa';
+ m.innerHTML=`<div class="bg"></div><div class="sh"><div class="grp">${items.map(([a,t])=>`<button data-x="${a}">${t}</button>`).join('')}</div><button class="cn" data-x="">Cancel</button></div>`;
+ o.w.querySelector('.mpg').appendChild(m);void m.offsetWidth;m.classList.add('on');
+ return new Promise(res=>m.addEventListener('click',ev=>{const b=ev.target.closest('[data-x]');if(!b&&!ev.target.classList.contains('bg'))return;m.classList.remove('on');setTimeout(()=>m.remove(),380);res(b?b.dataset.x:'')}))}
+async function shareMenu(o){const l=o.l,it=[['apple','Open in Apple Maps'],['new','New Route'],['pick','Change Start Point']];if(navigator.share)it.push(['send','Share Route\u2026']);it.push(['key',mkToken()?'Apple Maps Key':'Use Apple Maps\u2026']);
+ const a=await actions(o,it);if(MS!==o)return;
+ if(a==='apple')openURL(amURL(l));else if(a==='new'){if(!RJ.has(l.id))genRoute(l)}else if(a==='pick')pickMode(o,true);
+ else if(a==='send')navigator.share({title:`${l.f.dist} ${l.f.distu} ${l.type}`,url:amURL(l)}).catch(()=>{});else if(a==='key')keyDlg()}
+function keyDlg(){dlg({title:'Apple Maps Key',msg:'Optional. The map already works without one. To switch it to Apple Maps, paste a MapKit JS token from your Apple Developer account (it starts with eyJ). Leave it empty for the built-in map.',area:mkToken(),ok:'Save'}).then(v=>{if(typeof v!=='string')return;const t=noWS(v); // a token copied across lines still counts
+ if(t&&!isJWT(t)){toast('That\u2019s not a MapKit JS token. The map doesn\u2019t need one.');return}
+ try{if(t)localStorage.setItem(MKK,t);else localStorage.removeItem(MKK)}catch(e){}
+ // MapKit can only be set up once per page load, so swapping a key it already has means starting fresh
+ if(window.mapkit){location.reload();return}MKBAD='';MKP=null;if(MC)mapCard(MC.l);if(MS)sheetView(MS)})}
+function typeMenu(o){const g=o.w.querySelector('.mpg'),m=document.createElement('div');m.className='mpmn';
+ m.innerHTML=`<div class="bk"></div><div class="mn">${[['std','Standard',MPI.map],['sat','Satellite',MPI.globe]].map(([k,t,i])=>`<button data-t="${k}" class="${o.type===k?'on':''}"><i class="ck">${MPI.ck}</i>${t}${i}</button>`).join('')}</div>`;
+ g.appendChild(m);m.addEventListener('click',ev=>{const b=ev.target.closest('[data-t]');if(b){o.type=b.dataset.t;if(o.v)o.v.type(o.type)}m.remove()})}
+function closeMap(){const o=MS;if(!o)return;MS=null;o.w.classList.remove('on');setTimeout(()=>{try{o.v&&o.v.kill()}catch(e){}o.w.remove()},520);const c=$('mpc');if(c)c.focus({preventScroll:true})}
+document.addEventListener('click',ev=>{if(ev.target.closest&&ev.target.closest('#mpc'))openMap()});
+document.addEventListener('keydown',ev=>{if(ev.key==='Escape'&&MS&&!document.querySelector('.dlg')){const x=MS.w.querySelector('.mpmn .bk,.mpa.on .bg');if(x)x.click();else if(MS.pick)pickMode(MS,false);else closeMap()}
+ if((ev.key==='Enter'||ev.key===' ')&&ev.target.id==='mpc'){ev.preventDefault();openMap()}});
+// streets around home are fetched in the background shortly after the app opens, so even the first route is quick
+setTimeout(()=>{if(navigator.onLine!==false)streets(ST.home||DEF_S,2500).catch(()=>{})},4000);
 </script>
 </body>
 </html>
